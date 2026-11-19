@@ -1,0 +1,19 @@
+name: Release
+on:
+  release:
+    types: [published]
+permissions:
+  contents: write
+jobs:
+  asset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Set version from tag
+        run: npm version --no-git-tag-version --allow-same-version "${GITHUB_REF_NAME#v}"
+      - run: npm run build
+      - run: gh release upload "$GITHUB_REF_NAME" dist/jv-hud-cards.js --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}

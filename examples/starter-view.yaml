@@ -1,0 +1,35 @@
+# A minimal sections view using every card. Replace the entity IDs with your own.
+title: HUD
+path: hud
+type: sections
+max_columns: 2
+sections:
+  - type: grid
+    column_span: 2
+    cards:
+      - type: custom:jv-reactor-card
+        name: Home
+        greeting: true
+        clock: true
+        alerts:
+          - { entity: binary_sensor.front_door, state: "on", message: Front door open }
+        chips:
+          - { label: Lights, value: { count: [light.kitchen, light.living_room], state: "on" } }
+          - { label: Ext, entity: sensor.outdoor_temperature, unit: "°" }
+        grid_options: { columns: full }
+  - type: grid
+    cards:
+      - { type: custom:jv-section-card, name: Subsystems, icon: mdi:hexagon-outline }
+      - type: custom:jv-nav-card
+        name: Lighting
+        icon: mdi:lightbulb-group
+        navigation_path: "#lighting"
+        stat: { count: [light.kitchen, light.living_room], state: "on" }
+        sub: Circuits active
+      - { type: custom:jv-tile-card, entity: light.kitchen, name: Kitchen, icon: mdi:ceiling-light }
+      - { type: custom:jv-readout-card, entity: sensor.outdoor_temperature, name: Exterior, icon: mdi:thermometer }
+  - type: grid
+    cards:
+      - { type: custom:jv-section-card, name: Climate, icon: mdi:thermostat }
+      - { type: custom:jv-thermostat-card, entity: climate.living_room }
+      - { type: custom:jv-zigbee-card, mode: summary }

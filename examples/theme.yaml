@@ -1,0 +1,26 @@
+# Save as /config/themes/jv-hud.yaml (requires `frontend: themes: !include_dir_merge_named themes` in configuration.yaml),
+# reload themes, then pick "JV HUD" in your profile or on the dashboard view.
+JV HUD:
+  modes:
+    dark:
+      jv-accent-rgb: "0,229,255"
+      jv-glow-strength: "0"          # set to "1" for neon glow on every card
+      jv-corner: "12px"
+      jv-surface-rgb: "2,9,16"
+      primary-color: "#00e5ff"
+      accent-color: "#00e5ff"
+      primary-background-color: "#010509"
+      card-background-color: "rgba(2,9,16,0.9)"
+      primary-text-color: "#d6f9ff"
+      secondary-text-color: "#7fd8e8"
+      app-header-background-color: "#020b12"
+      app-header-text-color: "#00e5ff"
+      sidebar-background-color: "#020b12"
+      ha-card-border-radius: "0px"
+      ha-card-box-shadow: "none"
+
+# Grid "blueprint" background for a sections view (paste into the view's YAML):
+# background: >-
+#   repeating-linear-gradient(0deg, rgba(0,229,255,0.035) 0px, rgba(0,229,255,0.035) 1px, transparent 1px, transparent 32px),
+#   repeating-linear-gradient(90deg, rgba(0,229,255,0.035) 0px, rgba(0,229,255,0.035) 1px, transparent 1px, transparent 32px),
+#   radial-gradient(ellipse at 50% -5%, #0c3a50 0%, #051521 42%, #010509 100%)
